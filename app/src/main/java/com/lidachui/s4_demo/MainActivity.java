@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
         for (int i=0;i<=strings.size();i++){
             strings.add("测试 "+i);
         }
-
+        //这里的是传递的假数据,直接在BaseAdapter里面可以看到
         taskList.setAdapter(new BaseAdapter<String,TaskViewHolder>(R.layout.task_detail_item_view,strings,this));
         getServer().getTaskStatus(TASK_STATUS);
         getServer().getTaskInfo(TASK_INFO,0);
