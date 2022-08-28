@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginTop="15dp"
+    android:background="@drawable/rip_cor_back">
+
+    <ImageView
+        android:id="@+id/veh_pho"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="15dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="150dp"
+        android:maxHeight="150dp"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/veh_pat_numb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/veh_pho"
+        android:text="04.00001" />
+
+    <TextView
+        android:id="@+id/veh_dri_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/veh_pat_numb"
+        android:layout_alignLeft="@id/veh_pat_numb"
+        android:layout_marginTop="10dp"
+        android:text="Li DaChui" />
+
+    <TextView
+        android:id="@+id/veh_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/veh_pat_numb"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/veh_pat_numb"
+        android:text="50ton" />
+
+    <ImageView
+        android:id="@+id/veh_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_delete"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:visibility="gone"/>
+
+</RelativeLayout>

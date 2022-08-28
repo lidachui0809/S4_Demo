@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context=".LoginActivity"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4">
+            <ImageView
+                android:layout_width="150sp"
+                android:layout_height="120sp"
+                android:id="@+id/log_img"
+                android:layout_gravity="bottom|center_horizontal"
+                android:src="@mipmap/logo_style_4"
+                android:background="@drawable/corn_reg_background"
+                android:layout_marginBottom="50sp"/>
+        </FrameLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6">
+
+            <TextView
+                android:id="@+id/hello_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Good Evening"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hello_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hello_text"
+                android:layout_alignLeft="@id/hello_text"
+                android:text="Please Login into the System"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/tele_number"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/hello_text_2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80sp"
+                android:hint="Telephone" />
+
+            <EditText
+                android:id="@+id/pwd_text"
+                android:layout_width="250sp"
+                android:layout_height="50sp"
+                android:layout_below="@id/tele_number"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20sp"
+                android:hint="Password"
+                android:inputType="textPassword"/>
+
+            <Button
+                android:id="@+id/start_login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pwd_text"
+                android:layout_alignLeft="@id/pwd_text"
+                android:layout_alignRight="@id/pwd_text"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="-2dp"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:text="Figure Login"
+                android:id="@+id/figure_login_btn"
+                android:background="@android:color/transparent"
+                android:layout_alignParentBottom="true"
+                android:onClick="onClick"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
+
+

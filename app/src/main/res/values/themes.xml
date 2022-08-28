@@ -16,12 +16,27 @@
 
     <style name="TabNoSelected">
         <item name="android:textSize">15dp</item>
-        <item name="android:textColor">#9A9A9A</item>
+        <item name="android:textColor">#676767</item>
+        <item name="textAllCaps">false</item>
     </style>
     <style name="TabSelected">
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/black</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="MyDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="NormalTabItemText" parent="android:TextAppearance">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">12dp</item>
     </style>
 
 

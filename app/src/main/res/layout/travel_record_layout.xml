@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:fillViewport="true"
+    android:scrollbarSize="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            android:id="@+id/task_view"
+            layout="@layout/task_detail_item_view" />
+
+        <RelativeLayout
+            android:id="@+id/veh_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_view"
+            android:layout_alignLeft="@id/task_view"
+            android:layout_alignRight="@id/task_view"
+            android:background="@drawable/corn_reg_background"
+            android:padding="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/show_veh_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@mipmap/icon_add" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_underline"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:layout_toRightOf="@id/show_veh_btn"
+                android:textStyle="bold"
+                android:text="Assign Vehicle(5)" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tr_veh_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/show_veh_btn"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/veh_view"
+            android:orientation="vertical"
+            android:background="@drawable/corn_reg_background"
+            android:padding="10dp"
+            android:layout_alignLeft="@id/task_view"
+            android:layout_alignRight="@id/task_view"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_underline"
+                android:text="Travelling Record"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/re_in_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address" />
+
+            <EditText
+                android:id="@+id/re_in_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Remark" />
+
+            <Button
+                android:id="@+id/add_remark_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/rip_cor_back"
+                android:text="Add"
+                android:textAllCaps="false" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tr_record_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

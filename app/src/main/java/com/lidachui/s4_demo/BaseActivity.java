@@ -1,5 +1,8 @@
 package com.lidachui.s4_demo;
 
+import android.animation.ObjectAnimator;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,12 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -26,9 +37,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     private String toolBarName;
     protected Handler mainHandler;
     private static final int ERROR_MSG = 1000;
+    private static final int UPDATE_VIEW = 46;
     private View childView;
     private SparseArray<View> childViews;
+    private Dialog dialog;
+    public ActivityResultLauncher<Intent> lunch;
 
+
+    public BaseActivity(){
+
+    }
 
     public BaseActivity(boolean neededBack,String toolBarName){
         this.neededBack=neededBack;
@@ -48,6 +66,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         childViews=new SparseArray<>();
         setToolBar();
         initData();
+
+        lunch=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result
+                ->{
+                    activityResultCallBack(result.getResultCode(),result.getData());
+                });
+
     }
 
     private void setMyContentView(){
@@ -63,13 +87,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void setMenuBtnClick(int which,int resId){
         if(which==1){
-
+            menuBtn1.setVisibility(View.VISIBLE);
             menuBtn1.setImageResource(resId);
             menuBtn1.setOnClickListener(this::viewOnClick);
         }else {
+            menuBtn2.setVisibility(View.VISIBLE);
             menuBtn2.setImageResource(resId);
             menuBtn2.setOnClickListener(this::viewOnClick);
         }
+    }
+
+    protected void activityResultCallBack(int code,Intent result){
+
     }
 
 
@@ -94,6 +123,23 @@ public abstract class BaseActivity extends AppCompatActivity {
         return HttpServer.getHttpServer(mainHandler);
     }
 
+    public void showLoadDialog(){
+        dialog=new Dialog(this,R.style.MyDialogStyle);
+        dialog.setContentView(R.layout.loading_layout);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+    }
+
+    public void closeDialog(){
+        if(dialog.isShowing()){
+            dialog.dismiss();
+        }
+    }
+
+    protected void bindViewOnClick(@NonNull View view){
+        view.setOnClickListener(this::viewOnClick);
+    }
+
     protected void showToast(String content ){
         Toast.makeText(this,content,Toast.LENGTH_SHORT).show();
     }
@@ -101,17 +147,74 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void startActivity(Class<?> className){
         Intent intent=new Intent(this,className);
         startActivity(intent);
+    }
 
+    protected void startActivity(Class<?> className,Bundle bundle){
+        Intent intent=new Intent(this,className);
+        intent.putExtra("bundle",bundle);
+        startActivity(intent);
+    }
+
+    protected void startActivityForResult(Class<?> className,Bundle bundle){
+        Intent intent=new Intent(this,className);
+        intent.putExtra("bundle",bundle);
+        lunch.launch(intent);
+    }
+
+
+
+    public DatePickerDialog showDatePickerDialog(String title,int which){
+        DatePickerDialog dialog=new DatePickerDialog(this);
+        dialog.setTitle(title);
+        dialog.setOnDateSetListener((view, year, month, dayOfMonth) -> {
+            Calendar calendar=Calendar.getInstance();
+            calendar.set(year,month,dayOfMonth);
+            DateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+            String str=simpleDateFormat.format(calendar.getTime());
+            mainHandler.obtainMessage(which,str).sendToTarget();
+        });
+        dialog.show();
+        return dialog;
     }
 
     protected void viewOnClick(View view){
 
     }
 
+    protected boolean checkNull(@NonNull TextView textView){
+        if(textView.getText().length()==0){
+            showToast("Please send info!");
+            playTransAnim(textView);
+            return true;
+        }
+        return false;
+    }
+
+    private void playTransAnim(View view){
+        ObjectAnimator objectAnimator=ObjectAnimator.ofFloat(view,"translationX",30,0,-30,0);
+        objectAnimator.setDuration(250);
+        objectAnimator.start();
+    }
+
     protected void handlerMessage(@NonNull Message msg){
         if(msg.what==ERROR_MSG){
             showToast(msg.obj.toString());
         }
+    }
+
+    public void setText(int resId, String value){
+        TextView textView=getView(resId);
+        textView.setText(value);
+    }
+
+
+    public  <T extends View> T getView(int resId){
+        if(childView!=null){
+            View view=childView.findViewById(resId);
+            return (T) view;
+        }
+        return null;
     }
 
     protected void sendMessage(int what,Object target){

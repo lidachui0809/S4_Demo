@@ -2,43 +2,51 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:padding="10dp">
+    android:layout_height="150dp"
+    android:padding="10dp"
+    android:background="@drawable/rip_cor_back"
+    android:layout_margin="5dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:text="Task Name"
         android:id="@+id/task_name"/>
+
+
 
     <TextView
         android:id="@+id/task_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/task_name"
-        android:text="a-aaaaaaaa--bbb"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="20dp"
+        android:text="a-aaaaaaaa--bbb" />
+
     <TextView
+        android:id="@+id/task_req_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/task_address"
-        android:id="@+id/task_req_date"
-        android:text=" request: 2022-9-10"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:text=" request: 2022-9-10" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/task_weight"
-        android:text="80Ton"
-        android:layout_alignParentBottom="true"/>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="80Ton" />
+
+    <TextView
         android:id="@+id/task_status"
-        android:text="No Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:text="No Start"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

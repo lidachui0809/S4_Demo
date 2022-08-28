@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:orientation="horizontal"
+    android:background="@drawable/text_underline"
+    android:paddingTop="5dp"
+    android:textAlignment="center">
+
+
+
+    <TextView
+        android:id="@+id/month_v"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:text="Month"
+        android:textAlignment="center"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="1dp"
+        android:background="@color/gray_bar"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/total_count_v"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:text="Total Count"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        />
+    <View
+        android:layout_width="1dp"
+        android:background="@color/gray_bar"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/onTime_v"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:textAlignment="center"
+        android:text="OnTime"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="1dp"
+        android:background="@color/gray_bar"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/advance_V"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:textAlignment="center"
+        android:text="Advance"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="1dp"
+        android:background="@color/gray_bar"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/over_v"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:textAlignment="center"
+        android:text="Over Time"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

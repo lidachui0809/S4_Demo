@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">S4_Demo</string>
+    <string name="str_Prov">Province</string>
+    <string name="str_City">City</string>
+    <string name="str_dis">District</string>
+    <string name="str_staff">Vehicle Team</string>
 </resources>

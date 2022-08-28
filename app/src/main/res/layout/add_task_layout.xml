@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="?attr/colorOnPrimary"
+        app:tabIndicatorGravity="stretch"
+        app:tabRippleColor="?attr/colorOnPrimary"
+        android:id="@+id/pace_type"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/TabNoSelected">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Place" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destination Place" />
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/title_underline"
+        >
+
+        <Spinner
+            android:id="@+id/select_prov"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:minWidth="150dp"
+            android:pointerIcon="cell"
+            android:prompt="@string/str_Prov"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            tools:listitem="@layout/span_item_view" />
+
+        <Spinner
+            android:id="@+id/select_city"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/select_prov"
+            android:layout_alignParentRight="true"
+            android:minWidth="150dp"
+            android:prompt="@string/str_City"
+            android:spinnerMode="dialog"
+            tools:listitem="@layout/span_item_view" />
+
+        <Spinner
+            android:id="@+id/select_Dis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/select_city"
+            android:layout_marginTop="10dp"
+            android:minWidth="150dp"
+            android:spinnerMode="dialog"
+            android:prompt="@string/str_dis"
+            tools:listitem="@layout/span_item_view" />
+
+        <EditText
+            android:id="@+id/select_street_adr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/select_Dis"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/text_underline"
+            android:hint="Street Address"
+            android:minWidth="150dp"
+            android:textAlignment="center"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/start_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_underline"
+            android:ellipsize="marquee"
+            android:enabled="false"
+            android:hint="Start Place"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/end_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/start_place"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/text_underline"
+            android:ellipsize="marquee"
+            android:enabled="false"
+            android:hint="Des Place"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/req_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/end_place"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/text_underline"
+            android:hint="Coal Wight"
+            android:inputType="number"
+            android:minWidth="150dp"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/req_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/req_weight"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/text_underline"
+            android:drawableRight="@mipmap/icon_calendar"
+            android:hint="Required Date"
+            android:inputType="date"
+            android:minWidth="150dp"
+            android:textAlignment="center"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:id="@+id/veh_team_staff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/req_weight"
+            android:layout_marginTop="10dp"
+            android:minWidth="150dp"
+            android:spinnerMode="dialog"
+            android:prompt="@string/str_staff"
+            tools:listitem="@layout/span_item_view" />
+
+        <EditText
+            android:id="@+id/task_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/veh_team_staff"
+            android:layout_marginTop="10dp"
+            android:hint="Remark"
+            android:textAlignment="center"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_remark"
+            android:layout_marginTop="10dp"
+            android:id="@+id/assign_vehicle"
+            android:background="@drawable/title_underline"
+            android:text="Assign Vehicle"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/auto_assign"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignTop="@id/assign_vehicle"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/hand_assign"
+            android:background="@drawable/corn_reg_background"
+            android:text="Assign Manual"
+            android:textAllCaps="false"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/hand_assign"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignTop="@id/assign_vehicle"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/corn_reg_background"
+            android:text="Assign Manual"
+            android:textAllCaps="false"
+            android:textSize="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vehicle_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hand_assign"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/corn_reg_background"
+            android:padding="5dp"
+            tools:listitem="@layout/vehicle_list_item_view" />
+    </RelativeLayout>
+</LinearLayout>

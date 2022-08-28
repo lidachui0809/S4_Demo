@@ -18,11 +18,15 @@ import java.util.List;
 public class BaseAdapter<T,VM extends BaseViewHolder<T>> extends RecyclerView.Adapter<VM> {
 
 
-    private List<T> data;
-    public ItemViewInterface mItemViewInterface;
-    private Context mContext;
+    private List<T>            data;
+    public  ViewClickInterface mViewClickInterface;
+    public ViewLongClickInterface mViewLongClickInterface;
+    private Context            mContext;
     private int resId;
-    private Class<?> vmClassName;
+    private Class thisClass;
+    public EventBus eventBus;
+    public boolean otherBool=true;
+    public int selectIndex=-2;
 
     public BaseAdapter(int resId,List<T> data,Context context){
         this.resId=resId;
@@ -30,20 +34,43 @@ public class BaseAdapter<T,VM extends BaseViewHolder<T>> extends RecyclerView.Ad
         this.mContext=context;
     }
 
+
+
     @NonNull
     @Override
     public VM onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView= LayoutInflater.from(mContext).inflate(resId,parent,false);
-        VM vm=getVMInstance(itemView);
+        if(thisClass==null){
+            thisClass=getClass(getClass());
+        }
+        VM vm=getVMInstance(itemView,thisClass);
         return vm;
     }
 
     @Override
     public void onBindViewHolder(@NonNull VM holder, int position) {
-        holder.onBind(position, data.get(position));
+        holder.eventBus=eventBus;
+        holder.otherBool=otherBool;
+        holder.onBind(holder.getAdapterPosition(), data.get(holder.getAdapterPosition()));
+        //整个item单击事件
+        holder.mBaseAdapter=this;
         holder.itemView.setOnClickListener(view -> {
-            mItemViewInterface.onItemViewClick(holder.getAdapterPosition(),holder.itemView);
+            if(mViewClickInterface !=null){
+                mViewClickInterface.onItemViewClick(position,holder.itemView);
+            }
         });
+        //item长按事件
+        holder.itemView.setOnLongClickListener(v -> {
+            if(mViewLongClickInterface!=null){
+                mViewLongClickInterface.onLongClick(holder.getAdapterPosition(),holder.itemView);
+            }
+            return false;
+        });
+        if(position!=selectIndex){
+            holder.itemView.setVisibility(View.VISIBLE);
+        }else {
+            holder.itemView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -60,25 +87,29 @@ public class BaseAdapter<T,VM extends BaseViewHolder<T>> extends RecyclerView.Ad
     public void addDate(T data){
         this.data.add(data);
         notifyItemInserted(getItemCount());
-        notifyItemChanged(getItemCount());
+//        notifyDataSetChanged();
+    }
+
+    public T getData(int position){
+        return data.get(position);
     }
 
     public void removeData(int position){
         this.data.remove(position);
         notifyItemRemoved(position);
-        notifyItemChanged(position);
+//        notifyDataSetChanged();
     }
 
    @Nullable
-   private VM getVMInstance(View view){
+   private VM getVMInstance(View view,Class<?> className){
        Constructor constructor=null;
         //获得当前类
-        Class<?> cls=getClass();
+//        Class<?> cls=getClass();
         //获得当前类的父类,通过该父类获取该父类泛型对象的类型
-        Class<VM> vmClass=getClass(cls);
+//        Class<VM> vmClass=getClass(cls);
         //通过泛型类型获得该类的构造函数,
        try {
-           constructor=vmClass.getDeclaredConstructor(View.class);
+           constructor=className.getDeclaredConstructor(View.class);
            //通过获得构造器创建实例对象
           return (VM) constructor.newInstance(view);
        } catch (NoSuchMethodException e) {
@@ -96,7 +127,7 @@ public class BaseAdapter<T,VM extends BaseViewHolder<T>> extends RecyclerView.Ad
 
    @Nullable
    private Class getClass(Class<?> cls){
-       //获得该类得父类泛型对象
+       //获得该类得父类类型及其泛型类型
        Type type= cls.getGenericSuperclass();
        //判断是否为参数类型
        if(type instanceof ParameterizedType){

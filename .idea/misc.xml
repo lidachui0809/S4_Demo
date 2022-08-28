@@ -3,9 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.106" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable/btn_style.xml" value="0.1" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable/corn_reg_background.xml" value="0.1795" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable/logo_backg.xml" value="0.195" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable/rip_cor_back.xml" value="0.1935" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable/text_underline.xml" value="0.144" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable/title_underline.xml" value="0.165" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/drawable/up_bot_line.xml" value="0.1" />
         <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/add_task_layout.xml" value="0.264" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/assign_manual_layout.xml" value="0.2" />
         <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/base_act_layout.xml" value="0.2" />
-        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/task_detail_item_view.xml" value="0.264" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/loading_layout.xml" value="0.2" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/login_layout.xml" value="0.19429347826086957" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/span_item_view.xml" value="0.264" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/task_detail_item_view.xml" value="0.4" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/task_total_item_view.xml" value="0.4" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/transportation_statistics_layout.xml" value="0.264" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/trav_re_item_view.xml" value="0.2" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/travel_record_layout.xml" value="0.264" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/vehicle_list_item_view.xml" value="0.264" />
+        <entry key="..\:/Android/S4_Demo/app/src/main/res/layout/view_task_layout.xml" value="0.19429347826086957" />
       </map>
     </option>
   </component>

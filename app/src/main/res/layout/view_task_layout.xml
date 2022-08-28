@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".TaskManagerActivity">
 
     <!-- tabIndicatorGravity :设置指示条的位置于layout_gravity类似-->
     <!-- tabIndicatorColor :设置指示条的颜色-->
@@ -13,11 +13,12 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/task_status_bar"
         android:layout_width="match_parent"
-        android:background="#D9D9D9"
+        android:background="#BFBFBF"
         app:tabIndicatorGravity="stretch"
         app:tabRippleColor="?attr/colorOnPrimary"
         app:tabIndicatorColor="?attr/colorOnPrimary"
         app:tabTextAppearance="@style/TabNoSelected"
+        app:tabSelectedTextColor="@color/white"
         android:layout_height="60dp">
     </com.google.android.material.tabs.TabLayout>
 
